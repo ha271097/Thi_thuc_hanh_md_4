@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}">
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js}"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/all.js}"></script>
+    <title>Spring Customer</title>
+    <title>Delete</title>
+</head>
+<body>
+<footer th:replace="/layout :: create"></footer>
+<form th:action="@{/city/delete}" method="post" th:object="${city}">
+    <table>
+        <tr>
+            <th>Tên thành phố</th>
+            <th>Quốc gia</th>
+            <th>Giới thiệu</th>
+        </tr>
+        <tr>
+            <td> <input type="hidden" th:field="*{id}"/></td>
+            <td><input type="text" th:field="*{name}"></td>
+            <td><input type="text" th:field="*{country.name}"></td><td>
+            <input type="text"th:field="*{introduce}"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Delete"></td>
+        </tr>
+    </table>
+</form>
+
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

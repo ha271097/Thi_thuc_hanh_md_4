@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}">
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js}"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/all.js}"></script>
+    <title>Spring Customer</title>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<footer th:replace="/layout :: create"></footer>
+<form action="/city/create" method="post" th:object="${city}">
+    <table class="custom-color-dialog">
+        <tr><td><input type="hidden" th:field="*{id}"/></td></tr>
+        <tr>
+            <td>Tên thành phố</td>
+            <th:block th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></th:block>
+            <td><input type="text"  th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Quốc gia</td>
+            <td>
+                <select  th:field="*{country}">
+                    <th:block th:each="c: ${country}">
+                        <option th:value="${c.id}" th:text="${c.name}"></option>
+                    </th:block>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Diện tích</td>
+            <td><input type="text" th:field="*{acreage}"></td>
+        </tr>
+        <tr>
+            <td>Dân số</td>
+            <td><input type="text" th:field="*{population}"></td>
+        </tr>
+        <tr>
+            <td>GDP</td>
+            <td><input type="text" th:field="*{GDP}"></td>
+        </tr>
+        <tr>
+            <td>Giới thiệu</td>
+            <td><input type="text" th:field="*{introduce}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+</form>
+
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
